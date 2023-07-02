@@ -45,8 +45,7 @@ class RunDetailsUiTest {
         }
 
         composeTestRule.onNodeWithTag(RunDetailsTestTags.records)
-            .performScrollToNode(hasText("Avg. Pace"))
-            .performScrollToNode(hasText("7.8 km/h"))
+            .performScrollToNode(hasText("Avg. Pace") and hasText("07:42 min/km"))
             .assertIsDisplayed()
     }
 }
