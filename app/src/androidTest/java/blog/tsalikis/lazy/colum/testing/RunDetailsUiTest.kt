@@ -29,12 +29,12 @@ class RunDetailsUiTest {
             RunAppTheme {
                 RunDetailsScreen(
                     records = listOf(
-                        RunBreakdown(
+                        RunRecord(
                             icon = R.drawable.ic_average_pace,
                             title = "Avg. Pace",
                             record = "07:42 min/km"
                         ),
-                        RunBreakdown(
+                        RunRecord(
                             icon = R.drawable.ic_speed,
                             title = "Avg. Speed",
                             record = "7.8 km/h"
@@ -46,6 +46,7 @@ class RunDetailsUiTest {
 
         composeTestRule.onNodeWithTag(RunDetailsTestTags.records)
             .performScrollToNode(hasText("Avg. Pace"))
+            .performScrollToNode(hasText("07:42 min/km"))
             .assertIsDisplayed()
     }
 }
