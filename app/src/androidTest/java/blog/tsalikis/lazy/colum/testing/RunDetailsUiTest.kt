@@ -5,6 +5,7 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performScrollToNode
+import androidx.compose.ui.test.printToLog
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import blog.tsalikis.lazy.colum.testing.ui.theme.RunAppTheme
 import org.junit.Assert.*
@@ -43,6 +44,9 @@ class RunDetailsUiTest {
                 )
             }
         }
+
+        composeTestRule.onNodeWithTag(RunDetailsTestTags.records)
+            .printToLog(RunDetailsTestTags.records)
 
         composeTestRule.onNodeWithTag(RunDetailsTestTags.records)
             .performScrollToNode(hasText("Avg. Pace") and hasText("07:42 min/km"))
