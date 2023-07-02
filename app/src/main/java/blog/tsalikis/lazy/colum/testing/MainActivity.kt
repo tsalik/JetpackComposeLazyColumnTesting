@@ -23,6 +23,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -74,6 +75,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+object RunDetailsTestTags {
+    const val records = "records"
+}
+
 @Composable
 fun RunDetailsScreen(records: List<RunRecord>, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize()) {
@@ -99,7 +104,8 @@ fun RunDetailsScreen(records: List<RunRecord>, modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(4.dp))
         LazyColumn(
             modifier = modifier
-                .padding(16.dp),
+                .padding(16.dp)
+                .testTag(RunDetailsTestTags.records),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(records) { record ->
