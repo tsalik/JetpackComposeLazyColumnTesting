@@ -89,18 +89,30 @@ object RunDetailsTestTags {
 fun RunDetailsScreen(records: List<RunRecord>, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize()) {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(16.dp)) {
-            Column(modifier = Modifier.weight(0.33f), horizontalAlignment = Alignment.Start) {
+            Column(
+                modifier = Modifier
+                    .weight(0.33f)
+                    .semantics(mergeDescendants = true) { },
+                horizontalAlignment = Alignment.Start
+            ) {
                 Text(text = "10.01", style = Typography.titleLarge)
                 Text(text = "Distance (km)", style = Typography.labelSmall)
             }
             Column(
-                modifier = Modifier.weight(0.33f),
+                modifier = Modifier
+                    .weight(0.33f)
+                    .semantics(mergeDescendants = true) { },
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(text = "01:17:15", style = Typography.titleLarge)
                 Text(text = "Duration", style = Typography.labelSmall)
             }
-            Column(modifier = Modifier.weight(0.33f), horizontalAlignment = Alignment.End) {
+            Column(
+                modifier = Modifier
+                    .weight(0.33f)
+                    .semantics(mergeDescendants = true) { },
+                horizontalAlignment = Alignment.End
+            ) {
                 Text(text = "996", style = Typography.titleLarge)
                 Text(text = "Calories", style = Typography.labelSmall)
             }
@@ -116,7 +128,9 @@ fun RunDetailsScreen(records: List<RunRecord>, modifier: Modifier = Modifier) {
         ) {
             items(records) { record ->
                 Column(modifier = Modifier.testTag(RunDetailsTestTags.recordRow)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.semantics(mergeDescendants = true) {}) {
                         Icon(
                             painter = painterResource(id = record.icon),
                             contentDescription = null,
