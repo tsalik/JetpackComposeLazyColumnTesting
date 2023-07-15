@@ -78,6 +78,8 @@ class MainActivity : ComponentActivity() {
 object RunDetailsTestTags {
     const val records = "records"
     const val recordRow = "recordRow"
+    const val recordTitle = "recordTitle"
+    const val recordValue = "recordValue"
 }
 
 @Composable
@@ -121,11 +123,13 @@ fun RunDetailsScreen(records: List<RunRecord>, modifier: Modifier = Modifier) {
                         Text(
                             text = record.title,
                             modifier = Modifier
-                                .weight(.8f),
+                                .weight(.8f)
+                                .testTag(RunDetailsTestTags.recordTitle),
                             style = Typography.titleMedium
                         )
                         Text(
                             text = record.record,
+                            modifier = Modifier.testTag(RunDetailsTestTags.recordValue),
                             style = Typography.titleMedium
                         )
                     }

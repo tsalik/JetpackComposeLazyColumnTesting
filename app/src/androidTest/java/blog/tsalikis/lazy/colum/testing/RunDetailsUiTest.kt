@@ -2,6 +2,7 @@ package blog.tsalikis.lazy.colum.testing
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasAnySibling
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -50,7 +51,10 @@ class RunDetailsUiTest {
             .printToLog(RunDetailsTestTags.records)
 
         composeTestRule.onNodeWithTag(RunDetailsTestTags.records)
-            .performScrollToNode(hasText("Avg. Pace") and hasAnySibling( hasText("07:42 min/km")))
+            .performScrollToNode(
+                (hasText("Avg. Pace") and hasTestTag(RunDetailsTestTags.recordTitle))
+                        and hasAnySibling(hasText("07:42 min/km") and hasTestTag(RunDetailsTestTags.recordValue))
+            )
             .assertIsDisplayed()
     }
 }
