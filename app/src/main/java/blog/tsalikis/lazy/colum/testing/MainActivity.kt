@@ -77,6 +77,7 @@ class MainActivity : ComponentActivity() {
 
 object RunDetailsTestTags {
     const val records = "records"
+    const val recordRow = "recordRow"
 }
 
 @Composable
@@ -109,7 +110,7 @@ fun RunDetailsScreen(records: List<RunRecord>, modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(records) { record ->
-                Column {
+                Column(modifier = Modifier.testTag(RunDetailsTestTags.recordRow)) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
                             painter = painterResource(id = record.icon),
