@@ -1,5 +1,7 @@
 package blog.tsalikis.lazy.colum.testing
 
+import androidx.annotation.DrawableRes
+import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.hasAnySibling
 import androidx.compose.ui.test.hasTestTag
@@ -54,7 +56,11 @@ class RunDetailsUiTest {
             .performScrollToNode(
                 (hasText("Avg. Pace") and hasTestTag(RunDetailsTestTags.recordTitle))
                         and hasAnySibling(hasText("07:42 min/km") and hasTestTag(RunDetailsTestTags.recordValue))
+                        and hasAnySibling(hasDrawable(R.drawable.ic_average_pace))
             )
             .assertIsDisplayed()
     }
 }
+
+fun hasDrawable(@DrawableRes id: Int): SemanticsMatcher =
+    SemanticsMatcher.expectValue(DrawableId, id)

@@ -25,6 +25,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.SemanticsPropertyKey
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import blog.tsalikis.lazy.colum.testing.ui.theme.RunAppTheme
@@ -117,7 +120,11 @@ fun RunDetailsScreen(records: List<RunRecord>, modifier: Modifier = Modifier) {
                         Icon(
                             painter = painterResource(id = record.icon),
                             contentDescription = null,
-                            modifier = Modifier.size(32.dp)
+                            modifier = Modifier
+                                .size(32.dp)
+                                .semantics {
+                                    drawableId = record.icon
+                                }
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
@@ -182,3 +189,6 @@ fun GreetingPreview() {
         )
     }
 }
+
+val DrawableId = SemanticsPropertyKey<Int>("DrawableResId")
+var SemanticsPropertyReceiver.drawableId by DrawableId
