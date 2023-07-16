@@ -49,10 +49,10 @@ class RunDetailsUiTest {
             }
         }
 
-        composeTestRule.onNodeWithTag(RunDetailsTestTags.records)
+        composeTestRule.onNodeWithTag(RunDetailsTestTags.records, useUnmergedTree = true)
             .printToLog(RunDetailsTestTags.records)
 
-        composeTestRule.onNodeWithTag(RunDetailsTestTags.records)
+        composeTestRule.onNodeWithTag(RunDetailsTestTags.records, useUnmergedTree = true)
             .performScrollToNode(
                 (hasText("Avg. Pace") and hasTestTag(RunDetailsTestTags.recordTitle))
                         and hasAnySibling(hasText("07:42 min/km") and hasTestTag(RunDetailsTestTags.recordValue))
